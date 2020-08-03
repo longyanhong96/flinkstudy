@@ -1,0 +1,19 @@
+<fields>
+    <field>
+        <position>1</position>
+        <name>BATCH_NBR</name>
+        <table>GDB_BASE_BANK</table>
+        <type>1</type>
+        <length>16</length>
+        <description>数据批号</description>
+    </field>
+
+    <field>
+        <position>2</position>
+        <name>BAR_CODE_NBR</name>
+        <table>GDB_BASE_BANK</table>
+        <type>1</type>
+        <length>20</length>
+        <description>申请代号</description>
+    </field>
+</fields>
