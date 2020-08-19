@@ -19,7 +19,7 @@ object KafkaSource {
 
     val props = PropertyRead.getProperties("connect-kafka.properties")
 
-    val stream = env.addSource(new FlinkKafkaConsumer[String]("t_bjsxt", new SimpleStringSchema(), props))
+    val stream = env.addSource(new FlinkKafkaConsumer[String]("flinkouttest", new SimpleStringSchema(), props))
 
     stream.print()
 

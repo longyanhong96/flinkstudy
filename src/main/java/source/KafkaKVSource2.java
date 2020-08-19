@@ -5,6 +5,9 @@ import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.streaming.connectors.kafka.KafkaDeserializationSchema;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Description : 把key和value合成一个json
  *
@@ -12,6 +15,9 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
  * @date 2020-08-19
  */
 public class KafkaKVSource2 implements KafkaDeserializationSchema<String> {
+
+    private Map<String, String> contents;
+
     @Override
     public boolean isEndOfStream(String s) {
         return false;
