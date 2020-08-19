@@ -24,7 +24,7 @@ public class KafkaKeyValue {
 //                new TypeInformationKeyValueSerializationSchema<String, String>(TypeInformation.of(String.class), TypeInformation.of(String.class),
 //                        env.getConfig()), props));
 
-        DataStreamSource<Tuple2<String, String>> kafkaStream = env.addSource(new FlinkKafkaConsumer<>("flinktest", new KafkaKVSource(), props));
+        DataStreamSource<String> kafkaStream = env.addSource(new FlinkKafkaConsumer<>("flinktest", new KafkaKVSource2(), props));
 
         kafkaStream.print();
 
