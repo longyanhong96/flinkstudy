@@ -1,7 +1,16 @@
 <fields>
     <field>
+        <position>0</position>
+        <name>transInfo</name>
+        <table>GDB_BASE_BANK</table>
+        <type>1</type>
+        <length>16</length>
+        <description>信审号</description>
+    </field>
+
+    <field>
         <position>1</position>
-        <name>BATCH_NBR</name>
+        <name>id_nbr</name>
         <table>GDB_BASE_BANK</table>
         <type>1</type>
         <length>16</length>
@@ -10,7 +19,7 @@
 
     <field>
         <position>2</position>
-        <name>BAR_CODE_NBR</name>
+        <name>name</name>
         <table>GDB_BASE_BANK</table>
         <type>1</type>
         <length>20</length>

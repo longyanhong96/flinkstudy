@@ -9,6 +9,7 @@ import org.dom4j.io.SAXReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,5 +52,33 @@ public class XMLParse {
         return xmlContents;
     }
 
+    public static Map<String, String> parseXmlByRelativePath(String fileName, String ids) {
+        HashMap<String, String> xmlContents = new HashMap<>();
+        InputStream xmlFile = null;
+        try {
+            xmlFile = XMLParse.class.getClassLoader().getResourceAsStream(fileName);
+//            FileInputStream xmlFile = new FileInputStream(new File(fileName));
 
+            Document doc = new SAXReader().read(xmlFile);
+            List<Element> elements = doc.getRootElement().elements();
+
+            for (Element ele : elements) {
+                List<Element> eleContents = ele.elements();
+                HashMap<String, String> xmlContentMap = new HashMap<>();
+                String idsValue = "";
+                for (Element content : eleContents) {
+                    if (content.getName().equals(ids)) {
+                        idsValue = content.getTextTrim();
+                    }
+                    xmlContentMap.put(content.getName(), content.getTextTrim());
+                }
+                String xmlContent = JSON.toJSONString(xmlContentMap);
+                xmlContents.put(idsValue, xmlContent);
+            }
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+
+        return xmlContents;
+    }
 }

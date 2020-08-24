@@ -1,7 +1,6 @@
 package utils;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Properties;
 
 /**
@@ -31,4 +30,27 @@ public class PropertyRead {
         }
         return properties;
     }
+
+    public static Properties getPropertiesByAbsolutePath(String fileName) {
+        Properties properties = new Properties();
+        InputStream in = null;
+        try {
+            in = new FileInputStream(new File(fileName));
+            properties.load(in);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return properties;
+    }
+
 }
