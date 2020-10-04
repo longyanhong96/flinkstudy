@@ -12,7 +12,7 @@ public class XMLTest {
     public static void main(String[] args) {
 //        Map<String, String> map=new HashMap<String,String>();
 //        try {
-//            InputStream is = new FileInputStream(new File("H:\\myworkspace\\flinkstudy\\src\\main\\resources\\realtime.xml"));
+//            InputStream is = new FileInputStream(new File("H:\\myworkspace\\flinkstudy\\src\\main\\resources\\realtime.Fields"));
 //
 //            SAXReader sax = new SAXReader(); //创建解析器
 //
@@ -34,7 +34,7 @@ public class XMLTest {
 //            e.printStackTrace();
 //        }
 
-        Map<String, String> contents = XMLParse.parseXml("H:\\myworkspace\\flinkstudy\\src\\main\\resources\\realtime.xml", "position");
+        Map<String, String> contents = XMLParse.parseXml("H:\\myworkspace\\flinkstudy\\src\\main\\resources\\realtime.Fields", "position");
 
         for (Map.Entry<String, String> entry : contents.entrySet()) {
             System.out.println(entry.getValue());

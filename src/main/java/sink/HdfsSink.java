@@ -26,12 +26,13 @@ public class HdfsSink {
         DataStreamSource<StationLog> mySourceStream = env.addSource(new MyCustomerSource());
 
         DefaultRollingPolicy<StationLog, String> rolling = DefaultRollingPolicy.create()
-                .withInactivityInterval(TimeUnit.SECONDS.toMillis(60))
-                .withRolloverInterval(TimeUnit.SECONDS.toMillis(60))
+                .withInactivityInterval(TimeUnit.MINUTES.toMillis(10))
+                .withRolloverInterval(TimeUnit.MINUTES.toMillis(10))
+//                .withMaxPartSize()
                 .build();
 
         StreamingFileSink<StationLog> hdfsSink = StreamingFileSink.forRowFormat(
-                new Path("hdfs://ns1/flinkIntoHdfs"),
+                new Path("hdfs://ns1/flinkIntoHdfs/success"),
                 new SimpleStringEncoder<StationLog>("UTF-8"))
                 .withBucketAssigner(new DateTimeBucketAssigner<>("yyyyMMdd", ZoneId.of("Asia/Shanghai")))
                 .withRollingPolicy(rolling)

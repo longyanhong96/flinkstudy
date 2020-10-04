@@ -6,6 +6,10 @@
         <type>1</type>
         <length>16</length>
         <description>信审号</description>
+        <testParams>
+            <a>1</a>
+            <b>2</b>
+        </testParams>
     </field>
 
     <field>
