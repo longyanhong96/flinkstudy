@@ -64,11 +64,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-shaded-hadoop-2-uber -->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.flink</groupId>-->
-            <!--<artifactId>flink-shaded-hadoop-2-uber</artifactId>-->
-            <!--<version>2.7.5-9.0</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-shaded-hadoop-2-uber</artifactId>
+            <version>2.7.5-9.0</version>
+        </dependency>
 
 
         <dependency>
@@ -88,7 +88,7 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.1.10</version>
-            <!--<scope>provided</scope>-->
+            <scope>provided</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -96,7 +96,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.38</version>
-            <!--<scope>provided</scope>-->
+            <scope>provided</scope>
         </dependency>
 
 
@@ -105,7 +105,7 @@
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>3.0.1</version>
-            <!--<scope>provided</scope>-->
+            <scope>provided</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.dom4j/dom4j -->
@@ -125,6 +125,7 @@
             <groupId>org.mongodb</groupId>
             <artifactId>mongo-java-driver</artifactId>
             <version>3.6.4</version>
+            <scope>provided</scope>
         </dependency>
 
 
@@ -147,12 +148,43 @@
             <groupId>org.apache.hive</groupId>
             <artifactId>hive-jdbc</artifactId>
             <version>1.2.1</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.5.1</version>
@@ -172,7 +204,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>params.ParameterTest</mainClass>
+                            <mainClass>cp.CheckpointRestoreTest</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
